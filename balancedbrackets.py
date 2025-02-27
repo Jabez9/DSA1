@@ -1,6 +1,16 @@
 #!/usr/bin/python3
 from stack import Stack
 
+def is_match(p1, p2):
+    if p1 == "(" and p2 == ")":
+        return True
+    elif p1 == "{" and p2 == "}":
+        return True
+    elif p1 == "[" and p2 == "]":
+        return True
+    else:
+        return False
+
 def is_paren_balanced(paren_string):
     s =Stack()
     is_balanced = True
@@ -27,15 +37,7 @@ def is_paren_balanced(paren_string):
         return False
     
 
-def is_match(p1, p2):
-    if p1 == "(" and p2 == ")":
-        return True
-    elif p1 == "{" and p2 == "}":
-        return True
-    elif p1 == "[" and p2 == "]":
-        return True
-    else:
-        return False
+
     
 print("String : (((({})))) Balanced or not?")
 print(is_paren_balanced("(((({}))))"))
