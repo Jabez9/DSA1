@@ -1,0 +1,9 @@
+#include "stdlib.hhf" ; // standard library header file
+program hello;
+
+// This is the node structure
+begin hello;
+
+stdout.put( "Hello, World!"NL );
+
+end hello;
