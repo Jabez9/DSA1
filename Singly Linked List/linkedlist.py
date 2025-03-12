@@ -50,7 +50,6 @@ class LinkedList:
         prev_node.next = new_node
 
 
-
     def printlist(self):
         cur_node = self.head
         while cur_node:
@@ -59,12 +58,10 @@ class LinkedList:
 
 
 ll = LinkedList()
-
 ll.append("A")
 ll.append("B")
 ll.append("C")
 ll.append("D")
 ll.prepend("1")
 ll.insert_after_node("D", "2")
-
 ll.printlist()
