@@ -25,10 +25,22 @@ class LinkedList:
         node1 = Node(val) #takes a value
 
         node1.next = self.head #point to the next node, which should now be the self.head
-        self.head = node1 #makes the new value node1 , the head,,ie self.head points to node1
+        self.head = node1 #makes node1 to be self.head 
 
     #inserting after a node
+    #first find the node
+    def findnode(self, value):
+        """Find a node by its value and return the node object."""
+        cur_node = self.head
+        while cur_node:
+            if cur_node.data == value:
+                return cur_node  # Return the node object if found
+            cur_node = cur_node.next
+        return None  # Return None if not found
+
+        
     def insert_after_node(self, prev_node, data):
+        prev_node = self.findnode(prev_node)
         if not prev_node:
             print("Previous node does not exist")
             return
