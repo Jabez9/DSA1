@@ -32,11 +32,11 @@ class LinkedList:
             cur_node = cur_node.next
         return None  # Return None if not found
 
-    def insert_after_value(self, target_value, data):
+    def insert_after_value(self, prev, data):
         """Find a node by its value and insert a new node after it."""
-        prev_node = self.find_node(target_value)  # Find the node dynamically
+        prev_node = self.find_node(prev)  # Find the node dynamically
         if not prev_node:
-            print(f"Node with value '{target_value}' not found.")
+            print(f"Node with value '{prev}' not found.")
             return
         new_node = Node(data)
         new_node.next = prev_node.next
@@ -50,20 +50,16 @@ class LinkedList:
 
     def delete_node(self,key):
         cur_node = self.head
-
         if cur_node and cur_node.data == key:
             self.head = cur_node.next
             cur_node = None
             return
-        
         prev = None
         while cur_node and cur_node.data != key:
             prev = cur_node
             cur_node = cur_node.next
-
         if cur_node is None:
             return
-        
         prev.next = cur_node.next 
         cur_node = None
 
@@ -73,10 +69,8 @@ ll.append("A")
 ll.append("B")
 ll.append("C")
 ll.append("D")
-# ll.prepend("1")
 
-# # Insert dynamically without manually traversing .next
-# ll.insert_after_value("1", "2")
+ll.insert_after_value("D", "2")
 
 ll.printlist()
 
