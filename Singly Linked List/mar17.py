@@ -89,7 +89,24 @@ class LinkedList:
 
         prev.next =cur_node.next
         cur_node = None
-        
+    
+    #This is iterative
+    def length(self):
+        cur = self.head
+        count = 0
+        while cur:
+            count +=1
+            cur = cur.next
+        print(f"The lenght of this linked list is {count}.")
+    #Recursive calling of the length
+    def length_rec(self, node):
+        if node is None:
+            return 0
+        else:
+            return 1+self.length_rec(node.next)
+
+
+
 
     def printlist(self):
         cur = self.head
@@ -117,4 +134,7 @@ llist.printlist()
 print("-----------------------")
 llist.delpos(6)
 llist.printlist()
-    
+print("-----------------------")
+llist.length()
+print("-----------------------") 
+print(f"The length by recursive counting is {llist.length_rec(llist.head)}.")

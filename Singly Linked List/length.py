@@ -37,7 +37,7 @@ class LinkedList:
         new_node.next = prev.next
         prev.next = new_node
 
-    def delete_node (self,key):
+    def delete_val (self,key):
         cur_node = self.head
 
         if cur_node and cur_node.data == key:
@@ -55,6 +55,41 @@ class LinkedList:
         
         prev.next = cur_node.next
         cur_node = None
+
+    def delpos(self,pos):
+        if pos < 0:
+            print("Negative indices not allowed.")
+            return
+        if self.head:
+            cur_node = self.head
+            if pos == 0:
+                self.head = cur_node.next
+                cur_node = None
+                return
+        
+        prev = None
+        count = 0
+        while cur_node and count != pos:
+            prev = cur_node
+            cur_node = cur_node.next
+            count += 1
+        
+        if cur_node is None:
+            print("The index is out of range")
+            return
+        
+        prev.next = cur_node.next
+        cur_node = None
+
+    def length(self):
+        cur = self.head
+        count = 0
+        while cur:
+            count +=1
+            cur = cur.next
+        print(f"The lenght of this linked list is {count}.")
+
+
 
     def printlist(self):
         cur_node = self.head
