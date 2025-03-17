@@ -44,26 +44,52 @@ class LinkedList:
             prev.next = new_node
     
     #deleting by value
-    def delnode(self,val):
+    def delval(self,val):
         #for the case of the head
-        cur = self.head
-
-        if cur and cur.data == val:
-            self.head = cur.next
-            cur = None
+        cur_node = self.head
+        if cur_node and cur_node.data == val:
+            self.head = cur_node.next
+            cur_node = None
             return
         
         prev = None
-        while cur and cur.data != val:
-            prev = cur
-            cur = cur.next
+        while cur_node and cur_node.data != val:
+            prev = cur_node
+            cur_node = cur_node.next
 
-        if cur is None:
+        if cur_node is None:
             print("The value to delete does not exist.")
             return
         
-        prev.next = cur.next
-        cur = None
+        prev.next = cur_node.next
+        cur_node = None
+
+    def delpos(self,pos):
+        if pos<0:
+            print("Invalid position: Negative indices not allowed.")
+            return
+        
+        if self.head:
+            cur_node = self.head
+            if pos ==0:
+                self.head = cur_node.next
+                cur_node = None
+                return
+
+        prev = None
+        count = 0
+        while cur_node and count != pos:
+            prev = cur_node
+            cur_node = cur_node.next 
+            count += 1   
+
+        if cur_node is None:
+            print(f"The position \"{pos}\" is out of the scope. No changes to the linked list.")
+            return
+
+        prev.next =cur_node.next
+        cur_node = None
+        
 
     def printlist(self):
         cur = self.head
@@ -71,4 +97,24 @@ class LinkedList:
             print(cur.data , end="->" if cur.next else "\n")
             cur = cur.next
 
+
+llist = LinkedList()
+llist.append("B")
+llist.append("C")
+llist.append("D")
+llist.append("E")
+llist.append("G")
+llist.printlist()
+print("-----------------------")
+llist.insertafter("E", "F")
+llist.printlist()
+print("-----------------------")
+llist.prepend("A")
+llist.printlist()
+print("-----------------------")
+llist.delval("A")
+llist.printlist()
+print("-----------------------")
+llist.delpos(6)
+llist.printlist()
     
