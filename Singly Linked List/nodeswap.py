@@ -17,13 +17,13 @@ class LinkedList:
     def append(self,data):
         new_node = Node(data)
         if self.head is None:
-            self.head = None
+            self.head = new_node
             return
         
         last_node = self.head
         while last_node.next:
             last_node = last_node.next
-        last_node = new_node
+        last_node.next = new_node
 
     def prepend(self,data):
         new_node = Node(data)
@@ -75,16 +75,23 @@ class LinkedList:
     def delpos(self, pos):
         if pos < 0:
             print("Negative indices not allowed")
+            return
 
-        if self.head:
-            cur = self.head
-            if pos == 0:
-                self.head = cur.next
-                cur = None
+        if self.head is None:
+            print("The list is empty.")
+            return
+
+        
+        cur = self.head
+
+        if pos == 0:
+            self.head = cur.next
+            cur = None
+            return
 
         count = 0
         prev = None
-        while cur and count != pos:
+        while cur and count < pos:
             prev = cur
             count += 1
             cur = cur.next
@@ -102,13 +109,13 @@ class LinkedList:
         while cur:
             count +=1
             cur = cur.next
-            print(f"The length of this linked list is {count}")
+        print(f"The length of this linked list is {count}")
 
-    def lenght_rec(self, node):
+    def length_rec(self, node):
         if node is None:
             return 0
         else:
-            return 1+(self.lenghtrec(node.next))
+            return 1+(self.length_rec(node.next))
         
 
     def swapnodes(self,node1,node2):
@@ -142,10 +149,40 @@ class LinkedList:
         else:
             self.head = curr1
 
+        temp = curr1.next
         curr1.next = curr2.next 
-        curr2.next = curr1.next
+        curr2.next = temp
 
-
-
+llist = LinkedList()
+llist.append("B")
+llist.append("C")
+llist.append("D")
+llist.append("E")
+llist.append("G")
+llist.printlist()
+print("-----------------------")
+llist.insertafter("E", "F")
+llist.printlist()
+print("-----------------------")
+llist.prepend("A")
+llist.printlist()
+print("-----------------------")
+llist.delval("A")
+llist.printlist()
+print("-----------------------")
+llist.delpos(6)
+llist.printlist()
+print("-----------------------")
+llist.length()
+print("-----------------------") 
+print(f"The length by recursive counting is {llist.length_rec(llist.head)}.")
+print("-----------------------")
+llist.printlist()
+print("-----------------------")  
+llist.swapnodes("E","F")
+llist.printlist()
+print("-----------------------") 
+llist.swapnodes("F", "E")
+llist.printlist()
 
 
