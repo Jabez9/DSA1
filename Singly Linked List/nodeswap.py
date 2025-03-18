@@ -109,6 +109,43 @@ class LinkedList:
             return 0
         else:
             return 1+(self.lenghtrec(node.next))
+        
+
+    def swapnodes(self,node1,node2):
+
+        if node1 == node2:
+            return
+
+        prev1 = None
+        curr1 = self.head
+        while curr1 and curr1.data != node1:
+            prev1 = curr1
+            curr1 = curr1.next
+
+        prev2 = None
+        curr2 = self.head
+        while curr2 and curr2.data != node2:
+            # prev2,curr2 = curr2,curr2.next
+            prev2 = curr2
+            curr2 = curr2.next
+
+        if not curr1 or not curr2:
+            return
+        
+        if prev1:
+            prev1.next = curr2
+        else:
+            self.head = curr2
+        
+        if prev2:
+            prev2.next = curr1
+        else:
+            self.head = curr1
+
+        curr1.next = curr2.next 
+        curr2.next = curr1.next
+
+
 
 
 
