@@ -61,7 +61,7 @@ class LinkedList:
             cur = cur.next
 
 
-        if prev is None:
+        if cur is None:
             print("The value to delete does not exist.")
         else:
             prev.next = cur.next
@@ -85,7 +85,7 @@ class LinkedList:
             count +=1
             cur_node = cur_node.next
 
-        if prev is None:
+        if cur_node is None:
             print(f"The position {pos} is out or range.")
 
         else:
