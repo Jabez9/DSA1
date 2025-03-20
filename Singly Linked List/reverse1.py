@@ -175,7 +175,6 @@ class LinkedList:
         
 
 llist = LinkedList()
-llist.append("B")
 llist.append("C")
 llist.append("D")
 llist.append("E")
@@ -185,6 +184,7 @@ print("-----------------------")
 llist.insertafter("E", "F")
 llist.printlist()
 print("-----------------------")
+llist.prepend("B")
 llist.prepend("A")
 llist.printlist()
 print("-----------------------")
