@@ -25,7 +25,7 @@ class LinkedList:
             last_node = last_node.next
         last_node.next = new_node
 
-    def append(self, data):
+    def prepend(self, data):
         new_node = Node(data)
         new_node.next = self.head
         self.head = new_node
@@ -53,12 +53,12 @@ class LinkedList:
     def delbyval(self,val):
         cur = self.head
         if cur and cur.data == val:
-            cur.next = self.head
+            self.head = cur.next
             cur = None
             return
         
         prev = None
-        while cur and cur.next != val:
+        while cur and cur.data != val:
             prev = cur
             cur = cur.next
 
@@ -81,7 +81,7 @@ class LinkedList:
         
         prev = None
         count = 0
-        while cur and pos < 0:
+        while cur and count < pos:
             prev = cur
             count+= 1
             cur = cur.next
@@ -110,6 +110,7 @@ class LinkedList:
             return
         if self.head is None:
             print("Linked list is empty")
+            return
 
         prev1 = None
         curr1 = self.head
@@ -127,12 +128,19 @@ class LinkedList:
         if not curr1 or not curr2:
             return "Either of the nodes does not exists"
         
-        if not prev1:
+        #if node 1 is the head
+        if prev1:
+            prev1.next = curr2
+        else:
             self.head = curr2
-        prev1.next = curr2
+        #the other option is
+        #if prev1:
+            #prev1.next = curr2
+        #else:
+            #self.head = curr2
 
         if not prev2:
-            self.head = curr2
+            self.head = curr1
         prev2.next = curr1
 
         temp = curr1.next
@@ -143,10 +151,10 @@ class LinkedList:
         prev = None
         cur = self.head
         while cur:
-            nxt = cur.next
+            temp = cur.next
             cur.next = prev
             prev = cur
-            cur = nxt
+            cur = temp
         self.head = prev
 
     def reverse_recursive(self):
