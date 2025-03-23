@@ -147,12 +147,21 @@ class LinkedList:
         curr1.next = curr2.next
         curr2.next = temp
 
+    def print_helper(self, node, name):
+        if node is None:
+            print(name + ": None")
+        else:
+            print(name + ":" ,node.data)
     def reverse_iterative(self):
         prev = None
         cur = self.head
         while cur:
             temp = cur.next
             cur.next = prev
+            self.print_helper(prev, "PREV")
+            self.print_helper(cur, "CUR")
+            self.print_helper(temp, "TEMP")
+            print("\n")
             prev = cur
             cur = temp
         self.head = prev
@@ -170,21 +179,82 @@ class LinkedList:
         
         self.head = _reverse_recursive(cur = self.head , prev = None)
         
+    def mergedlists(self, llist):
+        p = self.head
+        q = llist.head
+        s = None
+    
+        if not p:
+            return q
+        if not q:
+            return p
+        
+        if p and q:
+            if p.data <= q.data:
+                s = p
+                p = s.next
+            else:
+                s = q
+                q = s.next
 
-llist = LinkedList()
-llist.append("A")
-llist.append("B")
-llist.append("C")
-llist.append("D")
+            new_head = s
+        
+        while p and q:
+            if p.data <= q.data:
+                s.next = p
+                s = p
+                p = s.next
+            else:
+                s.next = q
+                s= q
+                q= s.next
 
-llist.reverse_recursive()
+        if not p:
+            s.next = q
+        if not q:
+            s.next = p
 
-llist.printlist()
-print("--------------------")
-llist.reverse_iterative()
-llist.printlist()
-print("----------------------")
-llist.swapnodes("B", "C")
-llist.printlist()
-print("----------------------")
-print(llist.length())
+        self.head = new_head
+        return self.head
+
+
+# llist = LinkedList()
+# llist.append("A")
+# llist.append("B")
+# llist.append("C")
+# llist.append("D")
+
+# llist.reverse_recursive()
+
+# llist.printlist()
+# print("--------------------")
+# llist.reverse_iterative()
+# llist.printlist()
+# print("----------------------")
+# llist.swapnodes("B", "C")
+# llist.printlist()
+# print("----------------------")
+# print(llist.length())
+
+llist_1 = LinkedList()
+llist_2 = LinkedList()
+
+llist_1.append(1)
+llist_1.append(5)
+llist_1.append(7)
+llist_1.append(9)
+llist_1.append(10)
+
+llist_2.append(2)
+llist_2.append(3)
+llist_2.append(4)
+llist_2.append(6)
+llist_2.append(8)
+
+llist_1.mergedlists(llist_2)
+print("------------------")
+llist_1.printlist()
+print("------------------")
+llist_1.reverse_iterative()
+llist_1.printlist()
+print("------------------")
