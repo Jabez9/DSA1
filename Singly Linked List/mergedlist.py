@@ -108,6 +108,7 @@ class LinkedList:
     def swapnodes(self,node1,node2):
         if node1 == node2:
             return
+        
         if self.head is None:
             print("Linked list is empty")
             return
@@ -133,11 +134,6 @@ class LinkedList:
             prev1.next = curr2
         else:
             self.head = curr2
-        #the other option is
-        #if prev1:
-            #prev1.next = curr2
-        #else:
-            #self.head = curr2
 
         if not prev2:
             self.head = curr1
@@ -152,6 +148,7 @@ class LinkedList:
             print(name + ": None")
         else:
             print(name + ":" ,node.data)
+
     def reverse_iterative(self):
         prev = None
         cur = self.head
@@ -204,7 +201,7 @@ class LinkedList:
                 s.next = p
                 s = p
                 p = s.next
-            else:
+            elif q.data <= p.data:
                 s.next = q
                 s= q
                 q= s.next
@@ -223,9 +220,7 @@ class LinkedList:
 # llist.append("B")
 # llist.append("C")
 # llist.append("D")
-
 # llist.reverse_recursive()
-
 # llist.printlist()
 # print("--------------------")
 # llist.reverse_iterative()
