@@ -13,7 +13,7 @@ class LinkedList:
         while cur:
             print(cur.data, end="-->" if cur.next else "\n")
             cur = cur.next
-        return
+        
     
     def length_iterative(self):
         cur = self.head
@@ -41,7 +41,7 @@ class LinkedList:
             last_node = last_node.next
         last_node.next = new_node
 
-    def append(self,data):
+    def prepend(self,data):
         new_node = Node(data)
         new_node.next = self.head
         self.head = new_node
@@ -140,18 +140,16 @@ class LinkedList:
             print("Either of the nodes , does not exist.")
             return
         
-        if not prev1:
+        if  prev1 is None:
             self.head = curr2
-        prev1.next = curr2
+        else:
+            prev1.next = curr2
 
-        if not prev2:
+        if  prev2 is None:
             self.head = curr1
-        prev2.next = curr1
+        else:
+            prev2.next = curr1
 
-        # if prev2:
-        #     prev2.next = curr1
-        # else:
-        #     self.head = prev2
 
         temp = curr1.next
         curr1.next = curr2.next
@@ -160,9 +158,9 @@ class LinkedList:
 
     def print_helper(self,node,name):
         if node is None:
-            return "None"
+            print(name + ": None")
         else:
-            return name, ":", node
+            print(name + ":", node.data)
 
 
     def reverse_iterative(self):
@@ -179,4 +177,61 @@ class LinkedList:
             curr = temp
         self.head = prev
 
+    def merged_list(self, llist2):
+        p = self.head
+        q = llist2.head
+        s = None
 
+        if not p:
+            return q
+        if not q:
+            return  p
+        
+        if p and q:
+            if p.data <= q.data:
+                s= p
+                p = s.next
+            
+            else:
+                s= q
+                q = s.next
+            
+            new_head = s
+
+        while p and q:
+            if p.data <= q.data:
+                s.next = p
+                s = p
+                p = s.next
+            
+            else:
+                s.next = q
+                s = q
+                q = s.next
+        if not p:
+            s.next = q
+        if not q:
+            s.next = p
+
+        self.head = new_head
+        return self.head
+
+
+
+                
+
+llist_1 = LinkedList()
+llist_2 = LinkedList()
+
+llist_1.append(1)
+llist_1.append(5)
+llist_1.append(7)
+llist_1.append(9)
+llist_1.append(10)
+
+print("------------------")
+llist_1.reverse_iterative()
+llist_1.print_list()
+print("--------------------")
+llist_1.swapnodes(10, 1)
+llist_1.print_list()
