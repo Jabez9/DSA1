@@ -26,11 +26,11 @@ class LinkedList:
             cur = cur.next
         return count
     
-    def length_recursive(self, node):
-        if node is None:
-            return 0
-        else:
-            return 1+ self.length_iterative(node.next)
+    # def length_recursive(self, node):
+    #     if node is None:
+    #         return 0
+    #     else:
+    #         return 1+ self.length_iterative(node.next)
     
     def append(self, data):
         new_node = Node(data)
@@ -67,7 +67,6 @@ class LinkedList:
             new_node = Node(key)
             new_node.next = prev.next
             prev.next = new_node
-    
 
     def delbypos(self, pos):
         if pos < 0:
@@ -89,7 +88,7 @@ class LinkedList:
             curr= curr.next
             count+= 1
 
-        if prev:
+        if not prev:
             print(f"The position {pos} is out of range")
 
         else:
@@ -180,6 +179,20 @@ class LinkedList:
             curr = temp
         self.head = prev
 
+    def reverse_recursive(self):
+
+        def _reverse_recursive(cur, prev):
+            if not cur:
+                return prev
+
+            nxt = cur.next
+            cur.next = prev
+            prev = cur 
+            cur = nxt 
+            return _reverse_recursive(cur, prev)
+
+        self.head = _reverse_recursive(cur=self.head, prev=None)
+
     def merged_list(self, llist2):
         p = self.head
         q = llist2.head
@@ -218,22 +231,6 @@ class LinkedList:
 
         self.head = new_head
         return self.head
-
-    # def remove_duplicates(self):
-    #     dup_values = dict()  # Dictionary to track seen values
-    #     curr = self.head
-    #     prev = None
-
-    #     while curr:
-    #         if curr.data in dup_values:
-    #             # Remove the duplicate node
-    #             prev.next = curr.next
-    #             curr = None  # Free memory (optional in Python)
-    #         else:
-    #             dup_values[curr.data] = 1  # Mark value as seen
-    #             prev = curr  # Move prev forward
-            
-    #         curr = prev.next  # Move curr forward (fixes bug)
 
 
     def remove_duplicates(self):
@@ -402,7 +399,8 @@ llist_3.append(1)
 llist_3.append(2)
 llist_3.append(3)
 llist_3.append(4)
-llist_3.append(5)
+llist_3.append(6)
+llist_3.insert_after(4,5)
 llist_3.rotate(2)
 llist_3.print_list()
 
