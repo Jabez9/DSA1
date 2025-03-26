@@ -26,7 +26,7 @@ class LinkedList:
         self.head = node1 #makes node1 to be self.head 
 
     #Inserting after a node
-    #first find the node
+    #first find the node ** optional
     def findnode(self, value):
         """Find a node by its value and return the node object."""
         cur_node = self.head
