@@ -216,19 +216,39 @@ class LinkedList:
         self.head = new_head
         return self.head
 
-    def remove_duplicates(self):
-        dup_values = dict()
-        curr = self.head
-        prev = None
-        while curr:
-            if curr.data in dup_values:
-                #remove the node
-                prev.next = curr.next
-                curr = None
-            else:
-                dup_values[curr.data] = 1
-                prev = curr
-            curr = curr.next
+# def remove_duplicates(self):
+#     dup_values = dict()  # Dictionary to track seen values
+#     curr = self.head
+#     prev = None
+
+#     while curr:
+#         if curr.data in dup_values:
+#             # Remove the duplicate node
+#             prev.next = curr.next
+#             curr = None  # Free memory (optional in Python)
+#         else:
+#             dup_values[curr.data] = 1  # Mark value as seen
+#             prev = curr  # Move prev forward
+        
+#         curr = prev.next  # Move curr forward (fixes bug)
+
+
+def remove_duplicates(self):
+    dup_values = dict()  # Dictionary to store seen values
+    curr = self.head  # Start from the head
+    prev = None  # Previous node tracker
+
+    while curr:
+        if curr.data in dup_values:
+            # Duplicate found, remove the node
+            prev.next = curr.next  # Skip the duplicate node
+            curr = curr.next  # Move to the next node
+        else:
+            dup_values[curr.data] = 1  # Mark value as seen
+            prev = curr  # Move previous pointer forward
+            curr = curr.next  # Move current pointer forward
+
+           
         
 
 
@@ -243,6 +263,7 @@ llist_1.append(1)
 llist_1.append(5)
 llist_1.append(7)
 llist_1.append(9)
+llist_1.append(5)
 llist_1.append(10)
 
 print("------------------")
@@ -250,4 +271,7 @@ llist_1.reverse_iterative()
 llist_1.print_list()
 print("--------------------")
 llist_1.swapnodes(10, 1)
+llist_1.print_list()
+print("-----------------")
+llist_1.remove_duplicates()
 llist_1.print_list()
