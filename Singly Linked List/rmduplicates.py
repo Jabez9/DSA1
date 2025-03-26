@@ -10,6 +10,9 @@ class LinkedList:
 
     def print_list(self):
         cur = self.head
+        if not cur:
+            print("Empty list")
+            return
         while cur:
             print(cur.data, end="-->" if cur.next else "\n")
             cur = cur.next
@@ -216,45 +219,44 @@ class LinkedList:
         self.head = new_head
         return self.head
 
-# def remove_duplicates(self):
-#     dup_values = dict()  # Dictionary to track seen values
-#     curr = self.head
-#     prev = None
+    # def remove_duplicates(self):
+    #     dup_values = dict()  # Dictionary to track seen values
+    #     curr = self.head
+    #     prev = None
 
-#     while curr:
-#         if curr.data in dup_values:
-#             # Remove the duplicate node
-#             prev.next = curr.next
-#             curr = None  # Free memory (optional in Python)
-#         else:
-#             dup_values[curr.data] = 1  # Mark value as seen
-#             prev = curr  # Move prev forward
+    #     while curr:
+    #         if curr.data in dup_values:
+    #             # Remove the duplicate node
+    #             prev.next = curr.next
+    #             curr = None  # Free memory (optional in Python)
+    #         else:
+    #             dup_values[curr.data] = 1  # Mark value as seen
+    #             prev = curr  # Move prev forward
+            
+    #         curr = prev.next  # Move curr forward (fixes bug)
+
+
+    def remove_duplicates(self):
+        if self.head is None:
+            print("Empty linked list")
+            return
         
-#         curr = prev.next  # Move curr forward (fixes bug)
+        dup_values = dict()  # Dictionary to store seen values
+        curr = self.head  # Start from the head
+        prev = None  # Previous node tracker
 
+        while curr:
+            if curr.data in dup_values:
+                # Duplicate found, remove the node
+                prev.next = curr.next  # Skip the duplicate node
+                curr = curr.next  # Move to the next node
+            else:
+                dup_values[curr.data] = 1  # Mark value as seen
+                prev = curr  # Move previous pointer forward
+                curr = curr.next  # Move current pointer forward
 
-def remove_duplicates(self):
-    dup_values = dict()  # Dictionary to store seen values
-    curr = self.head  # Start from the head
-    prev = None  # Previous node tracker
-
-    while curr:
-        if curr.data in dup_values:
-            # Duplicate found, remove the node
-            prev.next = curr.next  # Skip the duplicate node
-            curr = curr.next  # Move to the next node
-        else:
-            dup_values[curr.data] = 1  # Mark value as seen
-            prev = curr  # Move previous pointer forward
-            curr = curr.next  # Move current pointer forward
-
+     
            
-        
-
-
-
-
-                
 
 llist_1 = LinkedList()
 llist_2 = LinkedList()
