@@ -319,6 +319,7 @@ class LinkedList:
             return p.data
         else:
             return None
+            #will return this if the value entered is out of range
      
            
 
