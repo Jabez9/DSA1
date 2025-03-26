@@ -24,7 +24,7 @@ class LinkedList:
         while cur:
             count += 1
             cur = cur.next
-        return f"The length of the linked list recursively is {count} "
+        return count
     
     def length_recursive(self, node):
         if node is None:
@@ -255,6 +255,70 @@ class LinkedList:
                 prev = curr  # Move previous pointer forward
                 curr = curr.next  # Move current pointer forward
 
+    def print_nth_to_last(self,n, method):
+        # method 1 is mostly useful for a doubly linked list 
+        if method == 1:
+            total_len = self.length_iterative()
+
+            cur = self.head
+
+            while cur:
+                if total_len == n:
+                    print(cur.data)
+                    return cur.data
+                total_len -=1
+                cur = cur.next
+
+            if cur is None:
+                return
+            
+
+        elif method ==2:
+            p = self.head
+            q = self.head
+
+            if n >0:
+                count = 0
+                while q:
+                    count += 1
+                    if (count>= n):
+                        break
+                    q = q.next
+
+                if not q:
+                    print(str(n) + ' is greater than the number of nodes in the list.')  
+                    return
+                
+                while p and q.next:
+                    p = p.next
+                    q = q.next
+
+                return p.data
+            else:
+                return None
+            
+    def get_nth_to_last(self,n):
+        p = self.head
+        q = self.head
+
+        if n > 0:
+            count = 0
+            while q:
+                count +=1
+                if count >= n:
+                    break
+                q = q.next
+
+            if not q:
+                print(str(n) + " is greater than the number of nodes in the list")
+                return
+            
+            while p and q:
+                p = p.next 
+                q = q.next
+            return p.data
+        else:
+            return None
      
            
 
@@ -277,3 +341,7 @@ llist_1.print_list()
 print("-----------------")
 llist_1.remove_duplicates()
 llist_1.print_list()
+print("------------------------")
+print(llist_1.get_nth_to_last(8))
+print("-----------------")
+print(llist_1.get_nth_to_last(4))
