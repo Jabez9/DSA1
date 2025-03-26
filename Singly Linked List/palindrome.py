@@ -341,7 +341,7 @@ class LinkedList:
 
     #ROTATING A LIST
     def rotate(self,k):
-        if k> self.length_iterative():
+        if k > self.length_iterative():
             print(f"{k} exceeds the size of the linked list")
             return
         
@@ -366,6 +366,62 @@ class LinkedList:
         q.next = self.head
         self.head = p.next
         p.next = None
+
+
+    #IS PALINDROME
+    def is_palindrome1(self):
+        #soln one
+        s = ''
+        p = self.head
+        while p:
+            s += p.data
+            p = p.next
+        return s == s[::-1]
+    
+    def is_palindrome2(self):
+        #soln 2:
+        p = self.head
+        s = []
+        while p:
+            s.append(p.data)
+            p = p.next
+
+        p = self.head
+        while p:
+            data = s.pop()
+            if p.data != data:
+                return False
+            p = p.next
+
+        print(s)
+
+        return True
+    
+    def is_palindrome3(self):
+        if self.head :
+            p = self.head
+            q = self.head
+            prev = []
+
+            i = 0
+            while q:
+                prev.append(q)
+                q = q.next
+                i += 1
+            q = prev[i-1]
+
+            count = 1
+
+            while count <= i//2 + 1:
+                if prev[-count].data != p.data:
+                    return False
+                p = p.next
+                count +=1
+
+            return True
+        else:
+            return True
+    
 
 
 
@@ -406,3 +462,14 @@ llist_3.append(5)
 llist_3.rotate(2)
 llist_3.print_list()
 
+print('---------------')
+print('------------------')
+llist4 = LinkedList()
+
+llist4.append(1)
+llist4.append(2)
+llist4.append(1)
+llist4.append('cat')
+llist4.prepend('cat')
+print(llist4.is_palindrome2())
+llist4.print_list()
