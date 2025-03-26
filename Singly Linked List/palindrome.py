@@ -379,22 +379,19 @@ class LinkedList:
     #     return ''.join(s) == ''.join(s[::-1])
     
     def is_palindrome2(self):
-        #soln 2:
         p = self.head
         s = []
         while p:
             s.append(p.data)
             p = p.next
 
-        # print(s)
+        
         p = self.head
         while p:
             data = s.pop()
             if p.data != data:
                 return False
             p = p.next
-
-       
 
         return True
     
@@ -423,6 +420,17 @@ class LinkedList:
     #     else:
     #         return True
     
+    def move_tail_to_head(self):
+        if self.head and self.head.next:
+            last = self.head 
+            second_to_last = None
+            while last.next:
+                second_to_last = last
+                last = last.next
+            last.next = self.head 
+            second_to_last.next = None 
+            self.head = last
+
 
 
 llist_1 = LinkedList()
@@ -472,4 +480,6 @@ llist4.append(1)
 llist4.append('cat')
 llist4.prepend('cat')
 print(llist4.is_palindrome2())
+llist4.print_list()
+llist4.move_tail_to_head()
 llist4.print_list()
