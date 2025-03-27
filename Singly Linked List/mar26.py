@@ -156,9 +156,63 @@ class LinkedList:
         # curr1.next , curr2.next = curr2.next, curr1.next
 
     def reverse_iterative(self):
-        pass
-
+        prev = None
+        cur = self.head
+        while cur:
+            nxt = cur.next  
+            cur.next = prev
+            prev = cur
+            cur = nxt
         
+        self.head = prev
+
+
+    def count_occurence(self, value):
+        cur = self.head 
+        count = 0
+        while cur and cur.data == value:
+            count += 1
+            cur = cur.next
+        return count
+    
+
+    def is_palindrome(self):
+        cur = self.head
+        stack = []
+        while cur:
+            stack.append(cur.data)
+            cur = cur.next
+
+        cur = self.head
+        while cur:
+            if cur.data != stack.pop():
+                print("The linked list is not a palindrome.")
+                return False
+            cur = cur.next
+        return "The linked list is a palindrome."
+    
+    def remove_duplicate(self):
+        
+        cur = self.head
+        if not cur:
+            print("The linked list is empty.")
+            return
+        
+
+        prev = None
+        dup_values = dict()
+
+        while cur:
+            if cur and cur.data in dup_values:
+                prev.next = cur.next
+                cur = prev.next
+            else:
+                dup_values[cur.data] = True
+                prev = cur
+                cur = cur.next
+        
+
+
 llist = LinkedList()
 llist.append("C")
 llist.append("D")
@@ -181,6 +235,23 @@ print("------------------------")
 print("Swapping of nodes")
 llist.swap_nodes("B", "D")
 llist.print_list()
+
+print("------------------------")
+llist.append("B")
+llist.print_list()
+print("------------------------")
+llist.remove_duplicate()
+llist.print_list()
+print("------------------------")
+llist.append("E")
+llist.append("B")   
+llist.append("C")
+llist.append("D")
+print("------------------------")
+llist.print_list()
+print("------------------------")
+llist.is_palindrome()
+print("------------------------")
             
 
 
