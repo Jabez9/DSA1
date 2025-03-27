@@ -189,7 +189,7 @@ class LinkedList:
                 print("The linked list is not a palindrome.")
                 return False
             cur = cur.next
-        return "The linked list is a palindrome."
+        return True
     
     def remove_duplicate(self):
         
@@ -250,8 +250,12 @@ llist.append("D")
 print("------------------------")
 llist.print_list()
 print("------------------------")
-llist.is_palindrome()
+if llist.is_palindrome():
+    print("The linked list is a palindrome.")
+else:
+    print("The linked list is not a palindrome.")
 print("------------------------")
+
             
 
 
