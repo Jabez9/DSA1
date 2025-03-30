@@ -212,8 +212,18 @@ class LinkedList:
                 cur = cur.next
 
 
-    def find_nth_to_last(self):
-        pass
+    def get_nth_to_last(self, n):
+        total_len = self.length_iterative()
+
+        cur = self.head
+        while cur:
+            if total_len == n:
+                print(cur.data)
+                return cur.data
+            total_len -=1
+            cur = cur.next
+        if not cur:
+            return
 
     def merge_sorted(self, llist):
         p = self.head
@@ -253,6 +263,8 @@ class LinkedList:
             
         self.head = new_head
         return self.head
+    
+
         
 
 
