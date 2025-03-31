@@ -338,6 +338,12 @@ class LinkedList:
         self.head = new_head
         return self.head
     
+    def rotate(self,k):
+        p = self.head
+        q = self.head
+        
+        
+    
 
         
 
