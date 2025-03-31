@@ -91,11 +91,9 @@ def get_nth_to_last(self,n):
 
     if n > 0:
         count = 0
-        while p:
-            count +=1
-            if count >= n:
-                break
+        while p and count < n:
             p = p.next
+            count +=1
 
         if not p:
             print(n, " is not in the range of the list")

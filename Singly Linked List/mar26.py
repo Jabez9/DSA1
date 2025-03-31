@@ -212,41 +212,79 @@ class LinkedList:
                 cur = cur.next
 
 
-    def get_nth_to_last(self, n):
-        total_len = self.length_iterative()
+    def find_nth_from_last(self, n):
+        total = self.length_recursive()
 
         cur = self.head
         while cur:
-            if total_len == n:
+            if total == n:
                 print(cur.data)
                 return cur.data
-            total_len -=1
+            total -=1
             cur = cur.next
+
         if not cur:
             return
         
-    def find_nth_to_last(self,n):
+    def get_nth_from_last(self,n):
         p = self.head
         q = self.head
 
         if n > 0:
             count = 0
-            while q:
+            while p:
                 count +=1
                 if count >= n:
                     break
-                q = q.next
+                p = p.next
 
-            if not q:
-                print(str(n) + " is greater thant the nodes in the list.")
+            if not p:
+                print(n, " is not in the range of the list")
                 return
             
-            while p and q.next:
-                p = p.next
-                q = q.next
-            return p.data
+            else:
+                while q and p.next:
+                    q = q.next
+                    p  = p.next
+                # return q.data
+            
+                while q:
+                    print(q.data, end="-->")
+                    q = q.next
+                print() 
+
+            
         else:
-            return None
+            return "Invalid n"
+        
+
+    def get_nth_to_last(self,n):
+        p = self.head
+        q = self.head
+
+        if n > 0:
+            count = 0
+            while p and count < n:
+                p = p.next
+                count +=1
+
+            if not p:
+                print(n, " is not in the range of the list")
+                return
+            
+            else:
+                while q and p.next:
+                    q = q.next
+                    p  = p.next
+                # return q.data
+            
+                while q:
+                    print(q.data, end="-->")
+                    q = q.next
+                print() 
+
+        else:
+            return "Invalid n"
 
     def merge_sorted(self, llist):
         p = self.head
@@ -333,6 +371,12 @@ if llist.is_palindrome():
 else:
     print("The linked list is not a palindrome.")
 print("------------------------")
+llist.get_nth_from_last()
+print("--------------------")
+llist.get_nth_to_last()
+print("--------------------")
+llist.find_nth_from_last()
+print('--------------------------')
 
             
 
