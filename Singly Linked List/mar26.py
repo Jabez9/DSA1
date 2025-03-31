@@ -213,7 +213,7 @@ class LinkedList:
 
 
     def find_nth_from_last(self, n):
-        total = self.length_recursive()
+        total = self.length_iterative()
 
         cur = self.head
         while cur:
@@ -246,14 +246,8 @@ class LinkedList:
                 while q and p.next:
                     q = q.next
                     p  = p.next
-                # return q.data
-            
-                while q:
-                    print(q.data, end="-->")
-                    q = q.next
-                print() 
+                print(q.data)
 
-            
         else:
             return "Invalid n"
         
@@ -264,7 +258,7 @@ class LinkedList:
 
         if n > 0:
             count = 0
-            while p and count < n:
+            while p and count < n: #move p exactly n steps ahead
                 p = p.next
                 count +=1
 
@@ -273,18 +267,37 @@ class LinkedList:
                 return
             
             else:
-                while q and p.next:
+                while p: # mv p and q together
                     q = q.next
                     p  = p.next
-                # return q.data
             
                 while q:
-                    print(q.data, end="-->")
+                    print(q.data, end="-->" if q.next else "\n")
                     q = q.next
                 print() 
 
         else:
             return "Invalid n"
+        
+    def print_nth_to_last(self, n):
+        p = self.head
+        count = 0
+
+        # Move p to the nth index position
+        while p and count < n:
+            p = p.next
+            count += 1
+
+        # If n is out of range
+        if not p:
+            print(n, "is out of the range of the list")
+            return
+
+        # Print from the nth node to the last
+        while p:
+            print(p.data, end=" --> " if p.next else "\n")
+            p = p.next
+
 
     def merge_sorted(self, llist):
         p = self.head
@@ -371,13 +384,16 @@ if llist.is_palindrome():
 else:
     print("The linked list is not a palindrome.")
 print("------------------------")
-llist.get_nth_from_last()
-print("--------------------")
-llist.get_nth_to_last()
-print("--------------------")
-llist.find_nth_from_last()
+llist.print_list()
+print('------------------------------')
+llist.find_nth_from_last(4)
 print('--------------------------')
-
+llist.get_nth_from_last(4)
+print("--------------------")
+llist.get_nth_to_last(4)
+print("--------------------")
+llist.print_nth_to_last(3)
+print('-------------------')
             
 
 
