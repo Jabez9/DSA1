@@ -224,6 +224,29 @@ class LinkedList:
             cur = cur.next
         if not cur:
             return
+        
+    def find_nth_to_last(self,n):
+        p = self.head
+        q = self.head
+
+        if n > 0:
+            count = 0
+            while q:
+                count +=1
+                if count >= n:
+                    break
+                q = q.next
+
+            if not q:
+                print(str(n) + " is greater thant the nodes in the list.")
+                return
+            
+            while p and q.next:
+                p = p.next
+                q = q.next
+            return p.data
+        else:
+            return None
 
     def merge_sorted(self, llist):
         p = self.head
