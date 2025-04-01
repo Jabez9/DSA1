@@ -38,9 +38,9 @@ def merge_sorted(self, llist):
     self.head = new_head
     return self.head
 
-from mar26 import length_recursive
+from mar26 import length_iterative
 def find_nth_from_last(self, n):
-    total = self.length_recursive()
+    total = self.length_iterative()
 
     cur = self.head
     while cur:
