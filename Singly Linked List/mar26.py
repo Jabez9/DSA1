@@ -364,6 +364,24 @@ class LinkedList:
         self.head = p.next
         p.next =  None
 
+    def move_tail_to_head(self):
+        
+        if not self.head.next :
+            return
+        
+        prev = None
+        p = self.head
+
+        while p.next :
+            prev = p
+            p = p.next
+
+        prev.next = None
+        p.next = self.head
+        self.head = p
+
+
+
 
         
         
@@ -424,8 +442,21 @@ llist.get_nth_to_last(4)
 print("--------------------")
 llist.print_nth_to_last(3)
 print('-------------------')
-            
-
+llist1 = LinkedList()
+llist1.append(1)
+llist1.append(2)
+llist1.append(3)            
+llist1.append(4)
+llist1.append(5)
+llist1.append(6)
+print('-------------')
+llist1.print_list()
+llist1.rotate(1)
+print('-------------')
+llist1.print_list()
+print('--------------------')
+llist1.move_tail_to_head()
+llist1.print_list()
 
 
             
