@@ -272,6 +272,8 @@ class LinkedList:
             
         self.head = new_head
         return self.head
+    
+    
                 
 
 
