@@ -15,6 +15,7 @@ find the length of the linked list (iteratively, recursively)
 remove duplicates in the list
 find the nth to last node
 rotate the list
+count occurences
 
 
  """
