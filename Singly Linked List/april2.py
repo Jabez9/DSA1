@@ -231,7 +231,7 @@ class LinkedList:
         p = self.head
         q = self.head
          
-        pass
+        
 
     def merge_sorted(self, llist):
         p = self.head
