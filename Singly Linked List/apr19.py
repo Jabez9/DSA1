@@ -64,6 +64,10 @@ class LinkedList:
         count = 0
         prev = None
         cur = self.head
+        if pos == 0:
+            self.head = cur.next
+            cur = None
+            
         while cur and count< pos:
             prev = cur
             count +=1
@@ -150,8 +154,6 @@ class LinkedList:
 
             cur = cur.next
 
-    def rotate(self, k):
-        pass
 
     def palindrome(self) -> bool:
         if not self.head:
@@ -172,6 +174,36 @@ class LinkedList:
             cur = cur.next
 
         return True
+    
+
+    def rotate(self, k):
+        if  self.head and self.head .next:
+            p = self.head
+            q = self.head
+            count = 0
+            prev = None
+
+        while p  and count< k:
+            prev = p
+            p = p.next 
+            q = q.next 
+            count +=1 
+        
+        p = prev
+
+        while q:
+            prev = q
+            q = q.next
+
+        q = prev
+
+        q.next = self.head
+        self.head = p.next
+        p.next = None
+
+    
+    def move_tail_to_head(self):
+
 
 
 
