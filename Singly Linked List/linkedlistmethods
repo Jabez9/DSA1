@@ -8,7 +8,7 @@ delete a node by position
 delete a node by value 
 merge two sorted lists
 swap nodes
-print the list
+print the list 
 reverse the list(iterative, recursively)
 check if it is a palindrome
 find the length of the linked list (iteratively, recursively)

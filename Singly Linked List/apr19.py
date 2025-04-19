@@ -1,0 +1,141 @@
+#!/usr/bin/python3
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    def print_list(self):
+        cur = self.head
+        while cur:
+            print(cur.data, end= "-->" if cur.next else '\n')
+            cur = cur.next
+
+    def length(self):
+        cur = self.head
+        count = 0
+        while cur:
+            count+=1
+            cur =cur.next
+            return count
+        
+    def prepend(self, data):
+        new_node = Node(data)
+        new_node.next = self.head
+        self.head = new_node
+
+    def append(self, data):
+        new_node = Node(data)
+        if not self.head :
+            self.head = new_node
+
+        last_node = self.head
+        while last_node.next:
+            last_node = last_node.next
+        last_node.next = new_node
+
+    def find_node(self, data):
+        cur = self.head
+        while cur:
+            if cur and cur.data ==data:
+                return cur
+            cur = cur.next
+
+    def insert_after(self,node1, node2):
+        prev = self.find_node(node1)
+        
+        if not prev:
+            print(f"The previous node {node1} does not exist.")
+        
+        new_node = Node(node2)
+        new_node.next = prev.next
+        prev.next = new_node
+
+    def del_by_position(self, pos):
+        if not self.head:
+            print("Empty linked list")
+            return
+        if pos < 0:
+            print ("Invalid position, only positive indices are allowed.")
+            return
+        count = 0
+        prev = None
+        cur = self.head
+        while cur and count< pos:
+            prev = cur
+            count +=1
+            cur = cur.next
+        
+        if not prev:
+            print("The index is out of range.")
+        
+        prev.next = cur.next
+        cur = None # can be assumed
+
+    
+    def del_by_value(self, val):
+        if not self.head:
+            print("Empty linked list.")
+        
+        prev = None
+        cur = self.head
+
+        while cur:
+            if cur.data != val:
+                prev = cur
+            cur = cur.next
+        
+        if not prev:
+            print(f"The value {val} is not part of the linked list")
+
+        prev.next = cur.next
+
+    
+    def swap_nodes(self, node1, node2):
+        if node1 != node2:
+            return
+        
+
+        prev1 = None
+        curr1 = self.head
+
+        while curr1 and curr1.data != node1:
+            prev1 = curr1
+            curr1 = curr1.next
+
+        
+        prev2 = None
+        curr2 = self.head 
+
+        while curr2 and curr2.data != node2:
+            prev2 = curr2
+            curr2 = curr2.next
+  
+        if not prev1 and not prev2:
+            print("Either of the nodes do not exist.")
+            return
+        
+
+        if not prev1:
+            curr2 = self.head
+        else:
+            prev1.next = curr2
+        
+        if not prev2:
+            curr1 = self.head
+        else:
+            prev2.next = curr1
+        
+        temp = curr1.next
+        curr1.next = curr2.next
+        curr2.next = temp
+
+    def remove_duplicate(self):
+        cur = self.head
+        
+
+
+
