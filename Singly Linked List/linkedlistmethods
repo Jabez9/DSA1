@@ -16,6 +16,7 @@ remove duplicates in the list
 find the nth to last node
 rotate the list
 count occurences
+move tail to head
 
 
  """

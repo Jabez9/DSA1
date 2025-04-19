@@ -201,7 +201,7 @@ class LinkedList:
         self.head = p.next
         p.next = None
 
-    def get_nth_to_last(self, n):
+    def get_nth_from_last(self, n):
         p = self.head 
         q= self.head
 
@@ -250,14 +250,21 @@ class LinkedList:
         
         else:
             return "Invalid n"
+        
+    def count_occurences(self, node):
+        cur = self.head
+        count = 0
+        while cur:
+            if cur.data == node:
+                count += 1
+            cur = cur.next
+        return count
+    
+    
                 
-
-
-
-
-
     
     def move_tail_to_head(self):
+        pass
 
 
 
