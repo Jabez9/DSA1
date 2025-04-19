@@ -66,6 +66,7 @@ class CircularLinkedList:
 
 
     def remove(self,key):
+        #works on assumption that there are no duplicate nodes in the linked list
 
         if self.head:
             if self.head.data == key:
