@@ -8,13 +8,6 @@ class CircularLinkedList:
     def __init__(self):
         self.head = None
 
-    # def print_list(self):
-    #     cur = self.head
-    #     while cur:
-    #         print(cur.data , end='--> ' if cur.next else '\n')
-    #         if cur.next == self.head:
-    #             break
-    #         cur = cur.next
     def print_list(self):
         if not self.head:
             print("List is empty.")
@@ -68,7 +61,11 @@ class CircularLinkedList:
     def remove(self,key):
         #works on assumption that there are no duplicate nodes in the linked list
 
-        if self.head:
+
+        if not self.head:
+            return
+        
+        else:
             if self.head.data == key:
                 cur = self.head
                 while cur.next != self.head:
@@ -88,6 +85,7 @@ class CircularLinkedList:
                     if cur.data == key:
                         prev.next = cur.next
                         cur = cur.next
+        
 
 cllist = CircularLinkedList()
 cllist.append("A")
