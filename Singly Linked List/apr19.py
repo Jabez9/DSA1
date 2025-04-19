@@ -67,7 +67,7 @@ class LinkedList:
         if pos == 0:
             self.head = cur.next
             cur = None
-            
+
         while cur and count< pos:
             prev = cur
             count +=1
@@ -200,6 +200,61 @@ class LinkedList:
         q.next = self.head
         self.head = p.next
         p.next = None
+
+    def get_nth_to_last(self, n):
+        p = self.head 
+        q= self.head
+
+        if n >= 0:
+            count = 0
+            while p and count < n:
+                p = p.next 
+                count += 1
+
+            if not p:
+                print(n, " is not part of the list.")
+                return
+            
+            else:
+                while p:
+                    p = p.next
+                    q = q.next
+
+                while q:
+                    print(q.data, end= '-->' if q.next else '\n')
+                    q = q.next
+
+        else:
+            print('n should be a positive integer.')
+
+    def get_nth_from_last(self, n):
+        p= self.head
+        q = self.head
+
+        if n >= 0:
+
+            while p:
+                count += 1
+                if count >= n :
+                    break
+                p = p.next
+
+            if not p:
+                print(n, "is not in the range of the list.")
+            
+            while q and p.next:
+                q = q.next
+                p = p.next
+            
+            print(q.data)
+        
+        else:
+            return "Invalid n"
+                
+
+
+
+
 
     
     def move_tail_to_head(self):
