@@ -264,7 +264,27 @@ class LinkedList:
                 
     
     def move_tail_to_head(self):
-        pass
+        if not self.head or not self.head.next:
+            return
+        
+        p = self.head
+        prev = None
+
+        while p.next:
+            prev = p
+            p = p.next
+
+        prev.next = None
+        p.next = self.head
+        self.head = p
+
+
+
+            
+
+
+
+
 
 
 
