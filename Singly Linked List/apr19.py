@@ -152,6 +152,31 @@ class LinkedList:
 
     def rotate(self, k):
         pass
+
+    def palindrome(self) -> bool:
+        if not self.head:
+            print("Empty linked list")
+            return
+        
+        s = []
+        cur = self.head
+
+        while cur:
+            s.append(cur.data)
+            cur = cur.next
+
+        cur = self.head
+        while cur:
+            if s.pop != cur.data:
+                return False
+            cur = cur.next
+
+        return True
+
+
+
+
+        
         
 
 
