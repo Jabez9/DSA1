@@ -23,7 +23,7 @@ class CircularLinkedList:
         cur = self.head
         while True:
             # Print the current node's data
-            print(cur.data, end=' -> ')
+            print(cur.data, end=' --> ')
 
             # Move to the next node
             cur = cur.next
