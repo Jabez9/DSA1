@@ -134,8 +134,26 @@ class LinkedList:
         curr2.next = temp
 
     def remove_duplicate(self):
+        if not self.head:
+            return
         cur = self.head
+        duplicates = set()
+        prev = None
+
+        while cur:
+            if cur.data  in duplicates:
+                prev.next = cur.next
+            
+            else:
+                duplicates.add(cur.data)
+                prev = cur
+
+            cur = cur.next
+
+    def rotate(self, k):
+        pass
         
+
 
 
 
